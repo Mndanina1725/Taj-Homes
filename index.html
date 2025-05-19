@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Taj Homes</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 20px 0;
+      border-bottom: 1px solid #e5e5e5;
+      position: relative;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      gap: 250px;
+    }
+
+
+    .logo {
+      font-size: 1.8rem;
+      color: #2b2b2b;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #0078a0;
+    }
+
+    /* Hamburger button aligned right */
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      margin-left: auto;
+      z-index: 1001;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    /* Sidebar menu */
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -250px; /* hidden by default */
+      width: 250px;
+      height: 100%;
+      background-color: white;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+      padding: 60px 20px;
+      transition: right 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+    }
+
+    /* Main content wrapper */
+    #main-content {
+      transition: transform 0.3s ease;
+    }
+
+    /* When active */
+    .sidebar.active {
+      right: 0;
+    }
+
+    #main-content.shifted {
+      transform: translateX(-250px);
+    }
+
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background-color: white;
+        padding: 15px;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        width: 100%;
+      }
+      .push-right {
+        margin-left : auto;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    .hero {
+      background-image: url('img/image2.png');
+      background-size: cover;
+      background-position: center;
+      height: 500px;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .hero .overlay {
+      background-color: rgba(0, 0, 0, 0.4); /* dark overlay for text visibility */
+      padding: 100px 0;
+    }
+    .hero-content {
+      padding-top: 100px; /*  adjust  to push text lower */
+      text-align: center;
+    }
+
+
+    .about, .projects, .contact {
+      padding: 60px 0;
+      background-color: #ffffff;
+      margin-top: 10px;
+    }
+
+    footer {
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9rem;
+      color: #777;
+    }
+    .push-right {
+      margin-left: auto;
+    }
+
+    .hero-buttons {
+      margin-top: 250px;
+      display: flex;
+      gap: 50px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      padding: 12px 24px;
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      border-radius: 4px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3 ease;
+    }
+
+    .hero-btn:hover {
+      background-color: rgba(255,255,255,0.1);
+      color: white;
+    }
+
+    .hero-btn.secondary {
+      padding: 12px 24px;
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      border-radius: 4px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3 ease;
+    }
+
+    .hero-btn.secondary:hover {
+      background-color: rgba(255,255,255,0.1);
+      color: white;
+    }
+    .tagline {
+      font-size: 18px;
+      font-family: 'Trebuchet MS', sans-serif;
+
+    }
+
+    .slogan-section {
+      background-color: #ffffff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .slogan-content h2 {
+      font-size: 28px;
+      margin-bottom: 30px;
+      color: #2b2b2b;
+    }
+
+    .slogan-content .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .slogan-section .hero-btn {
+      background-color: #555;         /* dark gray */
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 12px 24px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .slogan-section .hero-btn:hover {
+      background-color: #f5f5dc;      /* beige */
+      color: #333;
+    }
+
+
+
+    .slogan-section .hero-btn.secondary:hover {
+      background-color: #f5f5dc;      /* beige */
+      color: #333;
+    }
+
+    .slogan-underline {
+      width: 100px;
+      height: 3px;
+      background-color: #d2b48c;
+      margin: 10px auto 30px auto;
+      boarder-radius: 2px;
+
+    }
+
+    .work-banner {
+      background-image: url('img/image6.png'); /* make sure the filename is correct! */
+      background-size: cover;
+      background-position: center;
+      height: 600px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .work-overlay {
+      text-align: center;
+    }
+
+    .work-btn {
+      padding: 18px 36px;
+      font-size: 20px;
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+      border-radius: 4px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3 ease;
+    }
+
+    .work-btn:hover {
+      background-color: white; /* darker beige */
+      color: #333;
+    }
+
+    #main-header {
+      position: relative; /* non-sticky state */
+      top: 0;
+      width: 100%;
+      transition: all 0.4s ease;
+      z-index: 999;
+    }
+
+    #main-header.sticky {
+      position: fixed;
+      top: 0;
+      background-color: #ffffff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      opacity: 0.95;
+      transform: translateY(0);
+    }
+
+
+    .close-btn {
+      font-size: 30px;
+      color: #333;
+      cursor: pointer;
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 1001;
+    }
+
+    .how-it-works {
+      background-color: #f0f0f0; /* light gray */
+      text-align: center;
+      padding: 80px 20px;
+      color: #333;
+    }
+
+    .how-it-works h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .how-it-works .underline {
+      width: 100px;
+      height: 3px;
+      background-color: #d2b48c;
+      margin: 10px auto 40px auto;
+      border-radius: 2px;
+    }
+
+    .steps {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .step {
+      flex: 1 1 250px;
+      max-width: 300px;
+    }
+
+    .step img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 20px;
+    }
+
+    .step h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #2b2b2b;
+    }
+
+    .step p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+
+    .testimonials {
+      background-image: url('img/imgage3.png'); /* your image */
+      background-size: cover;
+      background-position: center;
+      padding: 100px 20px;
+      color: white;
+      position: relative;
+      text-align: center;
+    }
+
+    .testimonial-overlay {
+      background-color: rgba(0, 0, 0, 0.5); /* dark overlay for readability */
+      padding: 60px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      border-radius: 10px;
+    }
+
+    .testimonials h2 {
+      font-size: 32px;
+      margin-bottom: 40px;
+    }
+
+    .testimonial-container {
+      position: relative;
+    }
+
+    .testimonial-slide {
+      display: none;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .testimonial-slide.active {
+      display: block;
+    }
+
+    .testimonial-slide span {
+      display: block;
+      margin-top: 20px;
+      font-style: italic;
+      color: white; /* beige accent */
+    }
+
+    button.prev,
+    button.next {
+      background: none;
+      border: none;
+      font-size: 32px;
+      color: white;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    button.prev:hover,
+    button.next:hover {
+      color: #d2b48c;
+    }
+
+    button.prev {
+      left: -40px;
+    }
+
+    button.next {
+      right: -40px;
+    }
+
+    .contact-info {
+      background-color: #f0f0f0;  /* Light gray */
+      color: #2b2b2b;             /* Darker text for readability */
+      padding: 60px 20px;
+    }
+
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .contact-item {
+      flex: 1 1 200px;
+    }
+
+    .contact-item h3 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #2b2b2b; /* Beige for consistency */
+    }
+
+
+    .contact-item p,
+    .contact-item a {
+      font-size: 16px;
+      color: #2b2b2b;
+      line-height: 1.6;
+      text-decoration: none;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 30px 0;
+      background-color: #f0f0f0;
+    }
+
+    .social-icons a {
+      color: #2b2b2b;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: gray;
+    }
+
+    footer {
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9rem;
+      color: #333;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px; /* spacing between logo and text */
+    }
+
+    .logo-img {
+      height: 30px; /* adjust size as needed */
+      width: auto;
+      border-radius: 20%;
+      object-fit: cover;
+    }
+
+
+
+  </style>
+</head>
+<body>
+<header id="main-header">
+  <div class="container nav-container">
+    <h1 class="logo">
+      <img src="img/logo.png" alt="Taj Homes Logo" class="logo-img" />
+      Taj Homes</h1>
+
+    <!-- ✅ Desktop nav links -->
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li class="push-right"><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- ✅ Hamburger for small screens -->
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</header>
+
+
+
+<nav id="sidebar" class="sidebar">
+  <div class="close-btn" id="close-sidebar">&times;</div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- Wrap all page content (except nav) in a wrapper -->
+<div id="main-content">
+  <!-- your sections go here: hero, about, projects, etc. -->
+</div>
+
+<section id="home" class="hero">
+  <div class="container hero-content">
+    <h2>Welcome to Taj Homes</h2>
+    <p class="tagline">Modern living spaces designed with care and built to last.</p>
+    <div class="hero-buttons">
+      <a href="renovate.html" class="hero-btn">I want to renovate</a>
+      <a href="build.html" class="hero-btn secondary">I want to build new</a>
+    </div>
+  </div>
+</section>
+
+<section class="slogan-section">
+  <div class="container slogan-content">
+    <h2>Designed for living, built with care</h2>
+    <div class="slogan-underline"></div>
+    <div class="hero-buttons">
+      <a href="renovate.html" class="hero-btn">I want to renovate</a>
+      <a href="build.html" class="hero-btn secondary">I want to build new</a>
+    </div>
+  </div>
+</section>
+
+
+<section class="work-banner">
+  <div class="work-overlay">
+    <a href="#projects" class="work-btn">Some of our work</a>
+  </div>
+</section>
+
+
+<section class="how-it-works">
+  <div class="container">
+    <h2>How Taj Homes Works</h2>
+    <div class="underline"></div>
+
+    <div class="steps">
+      <div class="step">
+        <img src="img/icon-consult.png" alt="Consult Icon">
+        <h3>Consult</h3>
+        <p>We start with a conversation — learning your vision, needs, and what “home” means to you.</p>
+      </div>
+
+      <div class="step">
+        <img src="img/icon-plan.png" alt="Design Icon">
+        <h3>Plan</h3>
+        <p>Our team creates a personalized design and plan tailored to your lifestyle, space, and budget.</p>
+      </div>
+
+      <div class="step">
+        <img src="img/icon-build.png" alt="Build Icon">
+        <h3>Build</h3>
+        <p>From foundation to finish, we construct your dream home with care, precision, and transparency.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="testimonial-overlay">
+    <h2>What Our Clients Are Saying</h2>
+    <div class="testimonial-container">
+      <button class="prev">&#10094;</button>
+      <div class="testimonial-slide active">
+        <p>"Taj Homes exceeded our expectations — from the initial design to the final walkthrough. Incredible quality and service!"</p>
+        <span>– Sarah M.</span>
+      </div>
+      <div class="testimonial-slide">
+        <p>"Working with Taj Homes was seamless. They made our dream home a reality!"</p>
+        <span>– James & Priya R.</span>
+      </div>
+      <div class="testimonial-slide">
+        <p>"Professional, detail-oriented, and kind — I’d recommend Taj Homes to anyone looking to build!"</p>
+        <span>– Marcus B.</span>
+      </div>
+      <button class="next">&#10095;</button>
+    </div>
+  </div>
+</section>
+<!-- Contact Info Section -->
+<section class="contact-info">
+  <div class="container contact-grid">
+    <div class="contact-item">
+      <h3>Address</h3>
+      <p>123 Main Street<br>Saskatoon, SK</p>
+    </div>
+    <div class="contact-item">
+      <h3>Hours</h3>
+      <p>Mon–Fri: 9am – 5pm<br>Sat–Sun: Closed</p>
+    </div>
+    <div class="contact-item">
+      <h3>Phone</h3>
+      <p><a href="tel:3065551234">(306) 555-1234</a></p>
+    </div>
+    <div class="contact-item">
+      <h3>Email</h3>
+      <p><a href="mailto:info@tajhomes.com">info@tajhomes.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- Social Icons -->
+<div class="social-icons">
+  <a href="tel:3065551234" aria-label="Call us"><i class="fas fa-phone"></i></a>
+  <a href="mailto:info@tajhomes.com" aria-label="Email us"><i class="fas fa-envelope"></i></a>
+  <a href="https://www.instagram.com/yourtajhandle" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Taj Homes. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const mainContent = document.getElementById('main-content');
+
+  hamburger.addEventListener('click', () => {
+    sidebar.classList.toggle('active');
+    mainContent.classList.toggle('shifted');
+  });
+</script>
+
+<script>
+  const header = document.getElementById('main-header');
+  const triggerSection = document.querySelector('.work-banner');
+
+  window.addEventListener('scroll', () => {
+    const triggerPoint = triggerSection.offsetTop;
+
+    if (window.scrollY >= triggerPoint) {
+      header.classList.add('sticky');
+    } else {
+      header.classList.remove('sticky');
+    }
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.getElementById('hamburger');
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.getElementById('main-content');
+    const closeBtn = document.getElementById('close-sidebar');
+
+    if (hamburger && sidebar && mainContent && closeBtn) {
+      hamburger.addEventListener('click', () => {
+        sidebar.classList.add('active');
+        mainContent.classList.add('shifted');
+      });
+
+      closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        mainContent.classList.remove('shifted');
+      });
+    } else {
+      console.warn('One or more sidebar elements not found.');
+    }
+  });
+</script>
+
+<script>
+  const slides = document.querySelectorAll(".testimonial-slide");
+  const prevBtn = document.querySelector(".prev");
+  const nextBtn = document.querySelector(".next");
+  let currentIndex = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+    });
+  }
+
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+    showSlide(currentIndex);
+  });
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % slides.length;
+    showSlide(currentIndex);
+  });
+
+  // Show the first slide initially
+  showSlide(currentIndex);
+</script>
+
+
+</body>
+</html>
+

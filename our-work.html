@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Work - Taj Homes</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f8f8;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    header {
+      background-color: #ffffff;
+      padding: 20px 0;
+      border-bottom: 1px solid #e5e5e5;
+      position: relative;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    .logo-img {
+      height: 30px;
+      border-radius: 20%;
+      object-fit: cover;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      color: #0078a0;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      right: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: white;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+      padding: 60px 20px;
+      transition: right 0.3s ease;
+      z-index: 1000;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .sidebar ul li a {
+      text-decoration: none;
+      color: #333;
+      font-size: 18px;
+    }
+
+    #main-content {
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.active {
+      right: 0;
+    }
+
+    #main-content.shifted {
+      transform: translateX(-250px);
+    }
+
+    @media (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background-color: white;
+        padding: 15px;
+        border: 1px solid #ccc;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        width: 100%;
+      }
+      .push-right {
+        margin-left : auto;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+    }
+
+    footer {
+      background-color: #f0f0f0;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      padding: 60px 40px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .gallery-item {
+      background-color: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .caption {
+      padding: 12px 15px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+<header id="main-header">
+  <div class="container nav-container">
+    <h1 class="logo">
+      <img src="img/logo.png" alt="Taj Homes Logo" class="logo-img" /> Taj Homes
+    </h1>
+    <ul class="nav-links">
+      <li><a href="index.html#home">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#projects">Projects</a></li>
+      <li class="push-right"><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger">
+      <div></div><div></div><div></div>
+    </div>
+  </div>
+</header>
+
+<nav id="sidebar" class="sidebar">
+  <div class="close-btn" id="close-sidebar">&times;</div>
+  <ul>
+    <li><a href="index.html#home">Home</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#projects">Projects</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div id="main-content">
+  <section class="gallery">
+    <div class="gallery-item"><img src="img/project1.png" alt="Project 1"><div class="caption">Modern Kitchen</div></div>
+    <div class="gallery-item"><img src="img/project2.png" alt="Project 2"><div class="caption">Living Room</div></div>
+    <div class="gallery-item"><img src="img/project3.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+    <div class="gallery-item"><img src="img/project4.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+    <div class="gallery-item"><img src="img/project5.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+    <div class="gallery-item"><img src="img/project6.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+    <div class="gallery-item"><img src="img/project7.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+    <div class="gallery-item"><img src="img/project8.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+    <div class="gallery-item"><img src="img/project9.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+    <div class="gallery-item"><img src="img/project10.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+    <div class="gallery-item"><img src="img/project11.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+    <div class="gallery-item"><img src="img/project12.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+    <div class="gallery-item"><img src="img/project13.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+    <div class="gallery-item"><img src="img/project14.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+    <div class="gallery-item"><img src="img/project15.png" alt="Project 3"><div class="caption">Bathroom Design</div></div>
+  </section>
+</div>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Taj Homes. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const sidebar = document.getElementById('sidebar');
+  const mainContent = document.getElementById('main-content');
+  const closeBtn = document.getElementById('close-sidebar');
+
+  hamburger.addEventListener('click', () => {
+    sidebar.classList.add('active');
+    mainContent.classList.add('shifted');
+  });
+
+  closeBtn.addEventListener('click', () => {
+    sidebar.classList.remove('active');
+    mainContent.classList.remove('shifted');
+  });
+</script>
+
+</body>
+</html>
+
+

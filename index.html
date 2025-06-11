@@ -155,7 +155,7 @@
 
     .hero {
       position: relative;
-      background-image: url('img/main-picture.png');
+      background-image: url('video/intro-video.mp4');
       background-size: cover;
       background-position: center;
       height: 51vh; /* Full screen height */
@@ -589,6 +589,23 @@
       }
     }
 
+    .background-video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+    .hero::before {
+      display: none; /* optional, since video replaces background overlay */
+    }
+
+
 
 
 
@@ -636,10 +653,15 @@
 </div>
 
 <section id="home" class="hero">
+  <video autoplay muted loop playsinline class="background-video">
+    <source src="video/intro-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
   <div class="container hero-content">
     <h1>Designed for living, built with care</h1>
   </div>
 </section>
+
 
 <section class="slogan-section">
   <div class="container slogan-content">

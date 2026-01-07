@@ -731,36 +731,14 @@
     </div>
     
     <div class="contact-form">
-      <h3>Request a Quote</h3>
-      <form>
-        <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" required>
-        </div>
-        
-        <div class="form-group">
-          <label>Phone or Email</label>
-          <input type="text" required>
-        </div>
-        
-        <div class="form-group">
-          <label>Type of Project</label>
-          <select>
-            <option>Custom Home</option>
-            <option>Renovation</option>
-            <option>Basement</option>
-            <option>Garage / Shop</option>
-            <option>Other</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label>Tell us about your project</label>
-          <textarea></textarea>
-        </div>
-        
-        <button type="submit" class="form-submit">Send Message</button>
-      </form>
+      <h3>Looking to Get Started?</h3>
+      <p style="color: rgba(255,255,255,0.9); font-size: 16px; line-height: 1.7; margin-bottom: 20px;">
+        If you're thinking about building, renovating, or exploring your options, the best place to start is a conversation.
+        Reach out by phone or email and we’ll walk you through what makes sense for your project.
+      </p>
+      <p style="color: rgba(255,255,255,0.9); font-size: 16px; line-height: 1.7;">
+        No forms, no pressure. Just clear answers and honest guidance.
+      </p>
     </div>
   </div>
 </section>
@@ -768,6 +746,25 @@
 <footer>
   <p>© 2025 Taj Homes. All rights reserved.</p>
 </footer>
+
+<script>
+  function resumeHeroVideo() {
+    const v = document.querySelector('.hero-video');
+    if (!v) return;
+
+    // Force reload if the browser froze the video after back navigation
+    v.load();
+
+    const p = v.play();
+    if (p && typeof p.catch === 'function') p.catch(() => {});
+  }
+
+  window.addEventListener('pageshow', resumeHeroVideo);
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') resumeHeroVideo();
+  });
+</script>
 
 </body>
 </html>

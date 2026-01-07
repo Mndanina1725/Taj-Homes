@@ -1,850 +1,770 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta name="google-site-verification" content="GNMDH-pHKbYGNzU7Ncih-j8zUCcAl_S0h1PLI2Je_nU" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="icon" type="image/png" href="img/logo.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Taj Homes</title>
+  <title>Taj Homes - Custom Home Builder | Warman & Saskatoon</title>
+  <link rel="icon" type="image/png" href="img/logo.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #faf8f5;
+      --warmwhite: #ffffff;
+      --sage: #8a9a8f;
+      --forest: #4a5d51;
+      --charcoal: #2c2c2c;
+      --warm-beige: #d4c5b0;
+      --muted-text: #666666;
     }
 
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8f8f8;
-      color: #333;
-      line-height: 1.6;
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--cream);
+      color: var(--charcoal);
+      line-height: 1.65;
+      font-size: 16px;
     }
 
-    .container {
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
+    /* Typography */
+    h1, h2, h3 { 
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.2;
     }
 
+    /* Header - Simple & Clean */
     header {
-      background-color: #ffffff;
+      background: rgba(250, 248, 245, 0.95);
       padding: 20px 0;
-      border-bottom: 1px solid #e5e5e5;
-      position: relative;
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 90%;
-      max-width: 1100px;
-      margin: auto;
-
-    }
-
-
-    .logo {
-      font-size: 1.8rem;
-      color: #2b2b2b;
-      font-weight: bold;
-    }
-
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 20px;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #444;
-      font-weight: 500;
-    }
-
-    .nav-links a:hover {
-      color: #0078a0;
-    }
-
-    /* Hamburger button aligned right */
-    .hamburger {
-      display: flex;
-      flex-direction: column;
-      cursor: pointer;
-      z-index: 1001;
-    }
-
-    .hamburger div {
-      width: 25px;
-      height: 3px;
-      background-color: #333;
-      margin: 4px 0;
-      transition: 0.4s;
-    }
-
-    /* Sidebar menu */
-    .sidebar {
-      position: fixed;
+      position: sticky;
       top: 0;
-      right: -250px; /* hidden by default */
-      width: 250px;
-      height: 100%;
-      background-color: white;
-      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-      padding: 60px 20px;
-      transition: right 0.3s ease;
-      z-index: 1000;
+      z-index: 100;
+      border-bottom: 1px solid rgba(74, 93, 81, 0.1);
     }
 
-    .sidebar ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-
-    .sidebar ul li a {
-      text-decoration: none;
-      color: #333;
-      font-size: 18px;
-    }
-
-    /* Main content wrapper */
-    #main-content {
-      transition: transform 0.3s ease;
-    }
-
-    /* When active */
-    .sidebar.active {
-      right: 0;
-    }
-
-    #main-content.shifted {
-      transform: translateX(-250px);
-    }
-
-
-    @media (max-width: 768px) {
-      .hamburger {
-        display: flex;
-      }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        gap: 10px;
-        position: absolute;
-        top: 70px;
-        right: 20px;
-        background-color: white;
-        padding: 15px;
-        border: 1px solid #ccc;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        width: 100%;
-      }
-      .push-right {
-        margin-left : auto;
-      }
-      .nav-links.active {
-        display: flex;
-      }
-    }
-
-    .hero {
-      position: relative;
-
-      background-size: cover;
-      background-position: center;
-      height: 51vh; /* Full screen height */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: white;
-    }
-
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-color: rgba(0, 0, 0, 0.4); /* soft black overlay */
-      z-index: 1;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2; /* make sure content is above the overlay */
-      text-align: center;
-      padding: 0 20px;
-    }
-
-
-
-    .hero-content h1 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 35px;
-      font-weight: 400; /* or 700 for bold */
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .about, .projects, .contact {
-      padding: 60px 0;
-      background-color: #ffffff;
-      margin-top: 10px;
-    }
-
-    footer {
-      background-color: #f0f0f0;
-      text-align: center;
-      padding: 20px 0;
-      font-size: 0.9rem;
-      color: #777;
-    }
-    .push-right {
-      margin-left: auto;
-    }
-
-    .hero-buttons {
-      margin-top: 120px;
-      display: flex;
-      gap: 50px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .hero-btn {
-      padding: 12px 24px;
-      background-color: transparent;
-      color: white;
-      border: 2px solid white;
-      border-radius: 4px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: background-color 0.3s ease, color 0.3 ease;
-    }
-
-    .hero-btn:hover {
-      background-color: rgba(255,255,255,0.1);
-      color: white;
-    }
-
-    .hero-btn.secondary {
-      padding: 12px 24px;
-      background-color: transparent;
-      color: white;
-      border: 2px solid white;
-      border-radius: 4px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: background-color 0.3s ease, color 0.3 ease;
-    }
-
-    .hero-btn.secondary:hover {
-      background-color: rgba(255,255,255,0.1);
-      color: white;
-    }
-    .tagline {
-      font-size: 18px;
-      font-family: 'Trebuchet MS', sans-serif;
-
-    }
-
-    .slogan-section {
-      background-color: #ffffff;
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    .slogan-content h2 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 28px; /* optional: increase font size if you want */
-      margin-bottom: 30px;
-      color: #2b2b2b;
-    }
-
-
-    .slogan-content .hero-buttons {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-
-    .slogan-section .hero-btn {
-      background-color: #555;         /* dark gray */
-      color: white;
-      border: none;
-      border-radius: 4px;
-      padding: 12px 24px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: background-color 0.3s ease, color 0.3s ease;
-    }
-
-    .slogan-section .hero-btn:hover {
-      background-color: #f5f5dc;      /* beige */
-      color: #333;
-    }
-
-
-
-    .slogan-section .hero-btn.secondary:hover {
-      background-color: #f5f5dc;      /* beige */
-      color: #333;
-    }
-
-    .slogan-underline {
-      width: 100px;
-      height: 3px;
-      background-color: #d2b48c;
-      margin: 10px auto 30px auto;
-      boarder-radius: 2px;
-
-    }
-
-    .work-banner {
-      background-image: url('img/image6.png'); /* make sure the filename is correct! */
-      background-size: cover;
-      background-position: center;
-      height: 600px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .work-overlay {
-      text-align: center;
-    }
-
-    .work-btn {
-      padding: 18px 36px;
-      font-size: 20px;
-      background-color: transparent;
-      color: white;
-      border: 2px solid white;
-      border-radius: 4px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: background-color 0.3s ease, color 0.3 ease;
-    }
-
-    .work-btn:hover {
-      background-color: white; /* darker beige */
-      color: #333;
-    }
-
-    #main-header {
-      position: relative; /* non-sticky state */
-      top: 0;
-      width: 100%;
-      transition: all 0.4s ease;
-      z-index: 999;
-    }
-
-    #main-header.sticky {
-      position: fixed;
-      top: 0;
-      background-color: #ffffff;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-      opacity: 0.95;
-      transform: translateY(0);
-    }
-
-
-    .close-btn {
-      font-size: 30px;
-      color: #333;
-      cursor: pointer;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 1001;
-    }
-
-    .how-it-works {
-      background-color: #f0f0f0; /* light gray */
-      text-align: center;
-      padding: 80px 20px;
-      color: #333;
-    }
-
-    .how-it-works h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    .how-it-works .underline {
-      width: 100px;
-      height: 3px;
-      background-color: #d2b48c;
-      margin: 10px auto 40px auto;
-      border-radius: 2px;
-    }
-
-    .steps {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      gap: 40px;
-    }
-
-    .step {
-      flex: 1 1 250px;
-      max-width: 300px;
-    }
-
-    .step img {
-      width: 60px;
-      height: 60px;
-      margin-bottom: 20px;
-    }
-
-    .step h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: #2b2b2b;
-    }
-
-    .step p {
-      font-size: 16px;
-      line-height: 1.6;
-    }
-
-
-    .testimonials {
-      background-image: url('img/imgage3.png'); /* your image */
-      background-size: cover;
-      background-position: center;
-      padding: 100px 20px;
-      color: white;
-      position: relative;
-      text-align: center;
-    }
-
-    .testimonial-overlay {
-      background-color: rgba(0, 0, 0, 0.5); /* dark overlay for readability */
-      padding: 60px 20px;
-      max-width: 800px;
+    .nav-wrap {
+      max-width: 1200px;
       margin: 0 auto;
-      border-radius: 10px;
-    }
-
-    .testimonials h2 {
-      font-size: 32px;
-      margin-bottom: 40px;
-    }
-
-    .testimonial-container {
-      position: relative;
-    }
-
-    .testimonial-slide {
-      display: none;
-      font-size: 18px;
-      line-height: 1.6;
-    }
-
-    .testimonial-slide.active {
-      display: block;
-    }
-
-    .testimonial-slide span {
-      display: block;
-      margin-top: 20px;
-      font-style: italic;
-      color: white; /* beige accent */
-    }
-
-    button.prev,
-    button.next {
-      background: none;
-      border: none;
-      font-size: 32px;
-      color: white;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      cursor: pointer;
-      transition: color 0.2s ease;
-    }
-
-    button.prev:hover,
-    button.next:hover {
-      color: #d2b48c;
-    }
-
-    button.prev {
-      left: -40px;
-    }
-
-    button.next {
-      right: -40px;
-    }
-
-    .contact-info {
-      background-color: #f0f0f0;  /* Light gray */
-      color: #2b2b2b;             /* Darker text for readability */
-      padding: 60px 20px;
-    }
-
-
-    .contact-grid {
+      padding: 0 32px;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
-      gap: 40px;
-    }
-
-    .contact-item {
-      flex: 1 1 200px;
-    }
-
-    .contact-item h3 {
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: #2b2b2b; /* Beige for consistency */
-    }
-
-
-    .contact-item p,
-    .contact-item a {
-      font-size: 16px;
-      color: #2b2b2b;
-      line-height: 1.6;
-      text-decoration: none;
-    }
-
-    .contact-item a:hover {
-      text-decoration: underline;
-    }
-
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      padding: 30px 0;
-      background-color: #f0f0f0;
-    }
-
-    .social-icons a {
-      color: #2b2b2b;
-      font-size: 24px;
-      transition: color 0.3s ease;
-    }
-
-    .social-icons a:hover {
-      color: gray;
-    }
-
-    footer {
-      background-color: #f0f0f0;
-      text-align: center;
-      padding: 20px 0;
-      font-size: 0.9rem;
-      color: #333;
-    }
-
-    .logo {
-      display: flex;
       align-items: center;
-      gap: 10px; /* spacing between logo and text */
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      color: var(--forest);
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 0.2px;
     }
 
     .logo-img {
-      height: 30px; /* adjust size as needed */
-      width: auto;
-      border-radius: 20%;
+      width: 28px;
+      height: 28px;
       object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.12);
     }
 
-    .footer-flex {
+    nav ul {
       display: flex;
+      gap: 36px;
+      list-style: none;
       align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 20px;
     }
 
-    .footer-logo {
-      max-width: 100px;
-      height: auto;
+    nav a {
+      color: var(--charcoal);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+      transition: color 0.2s;
     }
 
-    @media (max-width: 600px) {
-      .footer-flex {
-        flex-direction: column;
-        text-align: center;
-      }
+    nav a:hover { color: var(--forest); }
 
-      .footer-logo {
-        max-width: 80px;
-        margin-bottom: 10px;
-      }
+    .nav-phone {
+      color: var(--forest) !important;
+      font-weight: 600;
     }
 
-    .background-video {
+    /* Hero - Editorial Layout */
+    .hero {
+      position: relative;
+      height: 85vh;
+      min-height: 600px;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: 80px;
+      overflow: hidden;
+      background: #1f2421; /* fallback if video can’t load */
+    }
+
+    .hero-video {
       position: absolute;
-      top: 0; left: 0;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       z-index: 0;
+      filter: saturate(0.95) contrast(1.05);
     }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        radial-gradient(60% 60% at 55% 45%, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.60) 100%),
+        linear-gradient(rgba(44, 44, 44, 0.25), rgba(44, 44, 44, 0.60));
+    }
+
     .hero-content {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      width: 100%;
     }
-    .hero::before {
-      display: none; /* optional, since video replaces background overlay */
+
+    .hero-text {
+      max-width: 620px;
+      color: white;
     }
 
+    .location-line {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
 
+    .hero h1 {
+      font-size: 58px;
+      margin-bottom: 20px;
+      color: white;
+      font-weight: 600;
+    }
 
+    .hero p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 32px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary, .btn-secondary {
+      padding: 15px 32px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+      border-radius: 2px;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--forest);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #3d4d43;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(4px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    /* Trust Strip - Minimal */
+    .trust-strip {
+      background: var(--warmwhite);
+      padding: 48px 32px;
+      border-bottom: 1px solid rgba(74, 93, 81, 0.1);
+    }
+
+    .trust-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 32px;
+    }
+
+    .trust-item {
+      font-size: 14px;
+      color: var(--muted-text);
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+
+    /* Featured Work - Masonry Style */
+    .work-section {
+      padding: 100px 32px;
+      background: var(--cream);
+    }
+
+    .work-intro {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+    }
+
+    .work-intro h2 {
+      font-size: 42px;
+      color: var(--charcoal);
+      margin-bottom: 16px;
+    }
+
+    .work-intro p {
+      font-size: 17px;
+      color: var(--muted-text);
+      max-width: 580px;
+    }
+
+    .work-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .work-item {
+      position: relative;
+      overflow: hidden;
+      background: #e8e4df;
+    }
+
+    .work-item.large {
+      grid-row: span 2;
+      height: 520px;
+    }
+
+    .work-item.medium {
+      height: 340px;
+    }
+
+    .work-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+
+    .work-item:hover img {
+      transform: scale(1.02);
+    }
+
+    .work-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 24px;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      color: white;
+    }
+
+    .work-caption h3 {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .work-caption span {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Our Approach - Plain Language */
+    .approach-section {
+      padding: 100px 32px;
+      background: var(--warmwhite);
+    }
+
+    .approach-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .approach-inner h2 {
+      font-size: 42px;
+      margin-bottom: 48px;
+      color: var(--charcoal);
+    }
+
+    .approach-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .approach-step {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 64px;
+      color: var(--warm-beige);
+      font-weight: 600;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .step-content h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: var(--charcoal);
+    }
+
+    .step-content p {
+      font-size: 16px;
+      color: var(--muted-text);
+      line-height: 1.7;
+    }
+
+    /* Services - Editorial */
+    .services-section {
+      padding: 100px 32px;
+      background: var(--cream);
+    }
+
+    .services-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      margin-bottom: 60px;
+    }
+
+    .services-header h2 {
+      font-size: 42px;
+      margin-bottom: 16px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px 60px;
+    }
+
+    .service-item h3 {
+      font-size: 26px;
+      margin-bottom: 12px;
+      color: var(--forest);
+    }
+
+    .service-item p {
+      color: var(--muted-text);
+      line-height: 1.7;
+    }
+
+    /* About / Values */
+    .about-section {
+      padding: 100px 32px;
+      background: var(--warmwhite);
+    }
+
+    .about-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-inner h2 {
+      font-size: 42px;
+      margin-bottom: 32px;
+      color: var(--charcoal);
+    }
+
+    .about-inner p {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--muted-text);
+      margin-bottom: 20px;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: 100px 32px;
+      background: var(--forest);
+      color: white;
+    }
+
+    .contact-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .contact-info h2 {
+      font-size: 38px;
+      margin-bottom: 32px;
+      color: white;
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .contact-detail h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .contact-detail p, .contact-detail a {
+      font-size: 16px;
+      color: white;
+      text-decoration: none;
+    }
+
+    .contact-detail a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-form {
+      background: rgba(255, 255, 255, 0.08);
+      padding: 40px;
+      border-radius: 2px;
+    }
+
+    .contact-form h3 {
+      font-size: 24px;
+      margin-bottom: 24px;
+      color: white;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 8px;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: 500;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 2px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: var(--charcoal);
+    }
+
+    .form-group textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 15px;
+      background: white;
+      color: var(--forest);
+      border: none;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover {
+      background: #f5f5f5;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--charcoal);
+      color: rgba(255, 255, 255, 0.6);
+      padding: 32px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .hero h1 { font-size: 44px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .work-item.large { height: 400px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .contact-inner { grid-template-columns: 1fr; gap: 60px; }
+      .approach-step { flex-direction: column; gap: 16px; }
+      .step-number { font-size: 48px; }
+    }
+
+    @media (max-width: 640px) {
+      nav ul { gap: 20px; }
+      .hero h1 { font-size: 36px; }
+      .hero-ctas { flex-direction: column; }
+      .btn-primary, .btn-secondary { text-align: center; }
+      .trust-inner { flex-direction: column; gap: 16px; }
+      h2 { font-size: 32px !important; }
+    }
   </style>
 </head>
+
 <body>
-<header id="main-header">
-  <div class="container nav-container">
-    <h1 class="logo">
-      <img src="img/logo.png" alt="Taj Homes Logo" class="logo-img" />
-      Taj Homes</h1>
 
-    <!--  Desktop nav links -->
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li class="push-right"><a href="#contact">Contact</a></li>
-    </ul>
-
-    <!--  Hamburger for small screens -->
-    <div class="hamburger" id="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+<header>
+  <div class="nav-wrap">
+    <a href="#" class="logo-mark">
+      <img class="logo-img" src="img/logo.png" alt="Taj Homes logo" />
+      Taj Homes
+    </a>
+    <nav>
+      <ul>
+        <li><a href="our-work.html">Our Work</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact" class="nav-phone">(306) 880-9555</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
-
-
-<nav id="sidebar" class="sidebar">
-  <div class="close-btn" id="close-sidebar">&times;</div>
-  <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
-<!-- Wrap all page content (except nav) in a wrapper -->
-<div id="main-content">
-  <!-- your sections go here: hero, about, projects, etc. -->
-</div>
-
-<section id="home" class="hero">
-  <video autoplay muted loop playsinline class="background-video">
-    <source src="video/intro-video.mp4" type="video/mp4">
+<section class="hero">
+  <video class="hero-video" autoplay muted loop playsinline preload="metadata">
+    <source src="video/intro-video.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
-  <div class="container hero-content">
-    <h1>Designed for living, built with care</h1>
-  </div>
-</section>
+  <div class="hero-overlay" aria-hidden="true"></div>
 
-
-<section class="slogan-section">
-  <div class="container slogan-content">
-    <h2>At Taj Homes, we build more than houses - we build your vision. Fast, modern, and within budget, every home is crafted with care </h2>
-    <div class="slogan-underline"></div>
-    <div class="hero-buttons">
-      <a href="renovate.html" class="hero-btn">I want to renovate</a>
-      <a href="build.html" class="hero-btn secondary">I want to build new</a>
-    </div>
-  </div>
-</section>
-
-
-<section id="projects" class="work-banner">
-  <div class="work-overlay">
-    <a href="our-work.html" class="work-btn">Some of our work</a>
-  </div>
-</section>
-
-
-
-<section id="about" class="how-it-works">
-  <div class="container">
-    <h2>How Taj Homes Works</h2>
-    <div class="underline"></div>
-
-    <div class="steps">
-      <div class="step">
-        <img src="img/icon-consult.png" alt="Consult Icon">
-        <h3>Consult</h3>
-        <p>We start with a conversation — learning your vision, needs, and what “home” means to you.</p>
-      </div>
-
-      <div class="step">
-        <img src="img/icon-plan.png" alt="Design Icon">
-        <h3>Plan</h3>
-        <p>Our team creates a personalized design and plan tailored to your lifestyle, space, and budget.</p>
-      </div>
-
-      <div class="step">
-        <img src="img/icon-build.png" alt="Build Icon">
-        <h3>Build</h3>
-        <p>From foundation to finish, we construct your dream home with care, precision, and transparency.</p>
+  <div class="hero-content">
+    <div class="hero-text">
+      <div class="location-line">Warman • Saskatoon • Martensville</div>
+      <h1>Built the way it should be</h1>
+      <p>We build custom homes and handle renovations across the Saskatoon area. Clear planning, honest timelines, and work that lasts.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Request a Quote</a>
+        <a href="our-work.html" class="btn-secondary">View Our Work</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="testimonials">
-  <div class="testimonial-overlay">
-    <h2>What Our Clients Are Saying</h2>
-    <div class="testimonial-container">
-      <button class="prev">&#10094;</button>
-      <div class="testimonial-slide active">
-        <p>"Taj Homes exceeded our expectations — from the initial design to the final walkthrough. Incredible quality and service!"</p>
-        <span>– Sarah M.</span>
-      </div>
-      <div class="testimonial-slide">
-        <p>"Working with Taj Homes was seamless. They made our dream home a reality!"</p>
-        <span>– James & Priya R.</span>
-      </div>
-      <div class="testimonial-slide">
-        <p>"Professional, detail-oriented, and kind — I’d recommend Taj Homes to anyone looking to build!"</p>
-        <span>– Marcus B.</span>
-      </div>
-      <button class="next">&#10095;</button>
-    </div>
-  </div>
-</section>
-<!-- Contact Info Section -->
-<section id="contact" class="contact-info">
-  <div class="container contact-grid">
-    <div class="contact-item">
-      <h3>Address</h3>
-      <p>728 Weir Cres<br>Warman, SK</p>
-    </div>
-    <div class="contact-item">
-      <h3>Hours</h3>
-      <p>Mon–Fri: 9am – 5pm<br>Sat–Sun: Closed</p>
-    </div>
-    <div class="contact-item">
-      <h3>Phone</h3>
-      <p><a href="tel:(306) 880-9555">(306) 880-9555</a></p>
-    </div>
-    <div class="contact-item">
-      <h3>Email</h3>
-      <p><a href="">Tajhomessk@yahoo.com</a></p>
-    </div>
+<section class="trust-strip">
+  <div class="trust-inner">
+    <div class="trust-item">Clear scope</div>
+    <div class="trust-item">Weekly updates</div>
+    <div class="trust-item">Local trades</div>
+    <div class="trust-item">Clean sites</div>
   </div>
 </section>
 
+<section id="work" class="work-section">
+  <div class="work-intro">
+    <h2>Recent Projects</h2>
+    <p>Custom builds and renovations across Warman, Saskatoon, and Martensville. Each project managed from foundation to final walkthrough.</p>
+  </div>
+  
+  <div class="work-grid">
+    <div class="work-item large">
+      <img src="img/img-new.JPG" alt="Custom home project in Warman">
+      <div class="work-caption">
+        <h3>Custom Home</h3>
+        <span>Warman</span>
+      </div>
+    </div>
+    
+    <div class="work-item medium">
+      <img src="img/image4.png" alt="Kitchen renovation">
+      <div class="work-caption">
+        <h3>Full Renovation</h3>
+        <span>Saskatoon</span>
+      </div>
+    </div>
+    
+    <div class="work-item medium">
+      <img src="img/image5.png" alt="Basement development">
+      <div class="work-caption">
+        <h3>Basement Build</h3>
+        <span>Martensville</span>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="approach-section">
+  <div class="approach-inner">
+    <h2>How We Work</h2>
+    
+    <div class="approach-steps">
+      <div class="approach-step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h3>We talk through your project</h3>
+          <p>What you want built, what the budget looks like, and when you need it done. We'll walk the site and answer questions.</p>
+        </div>
+      </div>
+      
+      <div class="approach-step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h3>We plan it properly</h3>
+          <p>Drawings, selections, and scope all get locked in before we start. No surprises halfway through.</p>
+        </div>
+      </div>
+      
+      <div class="approach-step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h3>We build it</h3>
+          <p>Our crew manages the build with regular check-ins. You'll know what's happening each week.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- Social Icons -->
-<div class="social-icons">
-  <a href="tel:(306) 880-9555" aria-label="Call us"><i class="fas fa-phone"></i></a>
-  <a href="" aria-label="Email us"><i class="fas fa-envelope"></i></a>
-  <a href="https://www.instagram.com/tajhomes_yxe/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-</div>
+<section id="services" class="services-section">
+  <div class="services-inner">
+    <div class="services-header">
+      <h2>What We Build</h2>
+    </div>
+    
+    <div class="services-grid">
+      <div class="service-item">
+        <h3>Custom Homes</h3>
+        <p>New builds designed and built to fit how you live. We handle everything from permits to final inspection.</p>
+      </div>
+      
+      <div class="service-item">
+        <h3>Renovations</h3>
+        <p>Kitchen remodels, full home updates, additions. We work around your schedule and keep disruption minimal.</p>
+      </div>
+      
+      <div class="service-item">
+        <h3>Basements</h3>
+        <p>Finish your lower level with extra bedrooms, rec rooms, or rental suites. Properly insulated and up to code.</p>
+      </div>
+      
+      <div class="service-item">
+        <h3>Spec Homes</h3>
+        <p>Thoughtfully built homes designed with quality finishes and practical layouts, ready for move-in.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<!-- Footer -->
+<section id="about" class="about-section">
+  <div class="about-inner">
+    <h2>About Taj Homes</h2>
+    <p>We're a local builder based in Warman, serving homeowners across the Saskatoon area. Most of our work comes from referrals, which means we focus on doing things properly the first time.</p>
+    
+    <p>We use local trades we've worked with for years. Our job sites are clean. We return calls. And we don't start a project until the plan is solid and everyone's clear on what's being built.</p>
+    
+    <p>If you're thinking about building or renovating, give us a call. We'll walk you through what's realistic for your budget and timeline.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact-section">
+  <div class="contact-inner">
+    <div class="contact-info">
+      <h2>Get in Touch</h2>
+      
+      <div class="contact-details">
+        <div class="contact-detail">
+          <h4>Address</h4>
+          <p>728 Weir Cres<br>Warman, SK</p>
+        </div>
+        
+        <div class="contact-detail">
+          <h4>Phone</h4>
+          <p><a href="tel:+13068809555">(306) 880-9555</a></p>
+        </div>
+        
+        <div class="contact-detail">
+          <h4>Email</h4>
+          <p><a href="mailto:tajhomessk@yahoo.com">tajhomessk@yahoo.com</a></p>
+        </div>
+        
+        <div class="contact-detail">
+          <h4>Hours</h4>
+          <p>Monday – Friday<br>9am – 5pm</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="contact-form">
+      <h3>Looking to Get Started?</h3>
+      <p style="color: rgba(255,255,255,0.9); font-size: 16px; line-height: 1.7; margin-bottom: 20px;">
+        If you're thinking about building, renovating, or exploring your options, the best place to start is a conversation.
+        Reach out by phone or email and we’ll walk you through what makes sense for your project.
+      </p>
+      <p style="color: rgba(255,255,255,0.9); font-size: 16px; line-height: 1.7;">
+        No forms, no pressure. Just clear answers and honest guidance.
+      </p>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <div class="container footer-flex">
-    <img src="img/new1.png" alt="New Footer Image" class="footer-logo" />
-    <p>&copy; 2025 Taj Homes. All rights reserved.</p>
-  </div>
+  <p>© 2025 Taj Homes. All rights reserved.</p>
 </footer>
 
-
 <script>
-  const hamburger = document.getElementById('hamburger');
-  const sidebar = document.getElementById('sidebar');
-  const mainContent = document.getElementById('main-content');
+  function resumeHeroVideo() {
+    const v = document.querySelector('.hero-video');
+    if (!v) return;
 
-  hamburger.addEventListener('click', () => {
-    sidebar.classList.toggle('active');
-    mainContent.classList.toggle('shifted');
-  });
-</script>
+    // Force reload if the browser froze the video after back navigation
+    v.load();
 
-<script>
-  const header = document.getElementById('main-header');
-  const triggerSection = document.querySelector('.work-banner');
-
-  window.addEventListener('scroll', () => {
-    const triggerPoint = triggerSection.offsetTop;
-
-    if (window.scrollY >= triggerPoint) {
-      header.classList.add('sticky');
-    } else {
-      header.classList.remove('sticky');
-    }
-  });
-</script>
-
-<script>
-  window.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.getElementById('hamburger');
-    const sidebar = document.getElementById('sidebar');
-    const mainContent = document.getElementById('main-content');
-    const closeBtn = document.getElementById('close-sidebar');
-
-    if (hamburger && sidebar && mainContent && closeBtn) {
-      hamburger.addEventListener('click', () => {
-        sidebar.classList.add('active');
-        mainContent.classList.add('shifted');
-      });
-
-      closeBtn.addEventListener('click', () => {
-        sidebar.classList.remove('active');
-        mainContent.classList.remove('shifted');
-      });
-    } else {
-      console.warn('One or more sidebar elements not found.');
-    }
-  });
-</script>
-
-<script>
-  const slides = document.querySelectorAll(".testimonial-slide");
-  const prevBtn = document.querySelector(".prev");
-  const nextBtn = document.querySelector(".next");
-  let currentIndex = 0;
-
-  function showSlide(index) {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("active", i === index);
-    });
+    const p = v.play();
+    if (p && typeof p.catch === 'function') p.catch(() => {});
   }
 
-  prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-    showSlide(currentIndex);
-  });
+  window.addEventListener('pageshow', resumeHeroVideo);
 
-  nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % slides.length;
-    showSlide(currentIndex);
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') resumeHeroVideo();
   });
-
-  // Show the first slide initially
-  showSlide(currentIndex);
 </script>
-
 
 </body>
 </html>
-
